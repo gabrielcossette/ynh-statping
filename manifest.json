@@ -1,0 +1,36 @@
+{
+    "name": "Statping",
+    "id": "statping",
+    "url": "",
+    "packaging_format": 1,
+    "description": {
+        "en": "Statping App for Yunohost",
+        "fr": "Statping App for Yunohost"
+    },
+    "version": "1.0",
+    "license": "AGPL-3.0",
+    "maintainer": {
+        "name": "Gabriel Cossette",
+        "email": "gabriel@gcossette.com"
+    },
+    "requirements": {
+        "yunohost": ">= 2.7.2"
+    },
+    "services": [
+        "nginx"
+     ],
+    "multi_instance": true,
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "type": "domain",
+                "ask": {
+                    "en": "Choose a domain for Statping",
+                    "fr": "Choisissez un domaine pour Statping"
+                },
+                "example": "app.domain.org"
+            }
+        ]
+    }
+}

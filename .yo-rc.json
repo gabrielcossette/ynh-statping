@@ -1,0 +1,18 @@
+{
+  "generator-dockerapp-yunohost": {
+    "beautifulName": "Statping",
+    "defaultPathOption": "",
+    "forceSecureAccess": true,
+    "secureAccessOption": false,
+    "adminUserOption": false,
+    "enDescription": "Statping App for Yunohost",
+    "frDescription": "Statping App for Yunohost",
+    "urlApp": "",
+    "urlDockerHub": "statping/statping",
+    "authorName": "Gabriel Cossette",
+    "authorEmail": "gabriel@gcossette.com",
+    "idName": "statping",
+    "reverseProxyProtocol": "http",
+    "scriptsLoadSave": false
+  }
+}
