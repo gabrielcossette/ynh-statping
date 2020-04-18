@@ -11,7 +11,7 @@
     "urlDockerHub": "statping/statping",
     "authorName": "Gabriel Cossette",
     "authorEmail": "gabriel@gcossette.com",
-    "idName": "statping",
+    "idName": "ynh-statping",
     "reverseProxyProtocol": "http",
     "scriptsLoadSave": false
   }
