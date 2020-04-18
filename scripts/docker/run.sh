@@ -11,5 +11,6 @@ image=statping/statping
 
 options="-p $port:8080 -v $data_path/data:/app"
 #
-docker run -d --name=$app --restart always $options $image 1>&2
-#echo $?
+echo docker run -d --name=$app --restart always $options $image
+docker run -d --name=$app --restart always $options $image
+echo $?
