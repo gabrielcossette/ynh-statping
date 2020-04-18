@@ -2,7 +2,7 @@
 
 # example :
 #
-#[ "$architecture" == "amd64" ] && image=portainer/portainer:1.14.0
+[ "$architecture" == "amd64" ] && image=statping/statping
 [ "$architecture" == "i386" ]  && image=statping/statping
 #[ "$architecture" == "armhf" ] && image=portainer/portainer:linux-arm-1.14.0
 [ -z $image ] && ynh_die "Sorry, your $architecture architecture is not supported ..."
