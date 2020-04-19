@@ -63,16 +63,16 @@ dockerapp_ynh_findreplacepath () {
 # find replace all variables
 dockerapp_ynh_findreplaceallvaribles () {
 	dockerapp_ynh_findreplacepath "YNH_APP" "$app"
-        dockerapp_ynh_findreplacepath "YNH_DATA" "$data_path"
-        dockerapp_ynh_findreplacepath "YNH_PORT" "$port"
-        dockerapp_ynh_findreplacepath "YNH_PATH" "$path_url"
+	dockerapp_ynh_findreplacepath "YNH_DATA" "$data_path"
+	dockerapp_ynh_findreplacepath "YNH_PORT" "$port"
+	dockerapp_ynh_findreplacepath "YNH_PATH" "$path_url"
 	bash docker/_specificvariablesapp.sh
 }
 
 # load variables
 dockerapp_ynh_loadvariables () {
 	export app=$app
-        export domain=$domain
+    export domain=$domain
 	export data_path=/home/yunohost.docker/$app
 	export port=$(ynh_app_setting_get $app port)
 	[ "$port" == "" ] && port=$(ynh_find_port 31000) && ynh_app_setting_set $app port $port
@@ -90,12 +90,11 @@ dockerapp_ynh_copyconf () {
 # docker run
 dockerapp_ynh_run () {
 	ret=$(bash docker/run.sh)
-	#if [ "$ret" != "0" ]
-	#then
-		# fix after yunohost restore iptables issue
-	#	[ "$ret" == "125" ] && docker inspect $app | grep "Error" | grep -q "iptables failed" && systemctl restart docker && return 0
-	#	ynh_die "Sorry ! App cannot start with docker. Please check docker logs."
-	#fi
+	if [ "$ret" == "125" ]
+		docker inspect $app | grep "Error" | grep -q "iptables failed" && systemctl restart docker
+	elif [ "$ret" == "126" ] || [ "$ret" == "127" ]
+		ynh_die "Sorry ! App cannot start with docker. Please check docker logs."
+	fi
 }
 
 # docker rm
@@ -106,7 +105,6 @@ dockerapp_ynh_rm () {
 
 # Modify Nginx configuration file and copy it to Nginx conf directory
 dockerapp_ynh_preparenginx () {
-
 	ynh_add_nginx_config
 }
 
