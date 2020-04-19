@@ -90,9 +90,11 @@ dockerapp_ynh_copyconf () {
 # docker run
 dockerapp_ynh_run () {
 	ret=$(bash docker/run.sh)
-	if [ "$ret" == "125" ]
+	if [ "$ret" == "125" ];
+	then
 		docker inspect $app | grep "Error" | grep -q "iptables failed" && systemctl restart docker
-	elif [ "$ret" == "126" ] || [ "$ret" == "127" ]
+	elif [ "$ret" == "126" ] || [ "$ret" == "127" ];
+	then
 		ynh_die "Sorry ! App cannot start with docker. Please check docker logs."
 	fi
 }
